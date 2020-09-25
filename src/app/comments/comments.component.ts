@@ -25,11 +25,9 @@ export class CommentsComponent implements OnInit {
     fetchComments(): void {
         this.articleService.getReplys(this.parentId).subscribe(
             (data) => {
-                console.log(data);
                 this.comments = data.map(
                     i => ({ ...i, replyOpen: false })
                 );
-                console.log(this.comments);
             }
         );
     }
@@ -44,6 +42,7 @@ export class CommentsComponent implements OnInit {
                 this.fetchComments();
             }
         );
+        this.commentTxt = '';
     }
 
 }
