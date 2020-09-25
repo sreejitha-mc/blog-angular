@@ -1,0 +1,17 @@
+<div class="article-comment-class">
+    <div class="comment-label" *ngIf="!showCommentform" (click)="showForm()">comment</div>
+
+    <div *ngIf="showCommentform">
+        <div class="comment-class" *ngFor="let comment of comments">
+            <div>
+                <span class="user-class">{{comment.user}} :</span> {{comment.comment}}
+            </div>
+            <div class="comment-date">
+                {{comment.date | date}}
+            </div>
+            <app-comments [parentId]="comment.id"></app-comments>
+        </div>
+        <input id="comment" name="comment" [(ngModel)]="commentTxt" class="comment-input-class">
+        <input type="button" value="add" (click)="addComment()" class="comment-add-button">
+    </div>
+</div>
